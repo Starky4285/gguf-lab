@@ -38,14 +38,13 @@ Copy `data/my_questions_template.jsonl` to `data/my_questions.jsonl`. Put one qu
 
 These are the most valuable rows, because they are real exam questions. Each one is repeated 3 times in training. Even 100–300 real PYQs with good tricks will noticeably improve the model.
 
-## Step 2: train on free Colab (about 40–70 min)
+## Step 2: train on free Colab (about 45-75 min)
 
-1. Zip this `chsl_tutor` folder as `chsl_tutor.zip`.
-2. Open `train_chsl_coach.ipynb` in Google Colab. Set **Runtime → Change runtime type → T4 GPU**.
-3. Run all cells. Upload the zip when asked.
-   - If you added your own questions, use the `--extra` line in cell 2.
-4. Cell 8 prints accuracy on 300 held-out questions it never saw during training.
-5. The last cell saves `chsl-coach-*.gguf` (~1 GB) to Google Drive → `chsl_coach/`.
+1. Open `train_chsl_coach.ipynb` in Google Colab (**File → Upload notebook**).
+2. **Runtime → Change runtime type → T4 GPU**, then **Runtime → Run all**.
+3. Allow Google Drive access when asked. That's it: the data generator is built into the notebook.
+4. The model lands in Drive at `MyDrive/chsl_coach/chsl-coach-Q4_K_M.gguf`, with an accuracy report next to it (`chsl-coach-eval.txt`).
+   - To include your own questions, put `my_questions.jsonl` in `MyDrive/chsl_coach/` before running.
 
 ## Step 3: run it in the app
 
